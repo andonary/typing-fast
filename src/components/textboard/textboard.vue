@@ -1,7 +1,6 @@
 <template>
     <div class="message">
-        <div class="message-body">
-            {{ getWord() }}
+        <div class="message-body" v-html="displayWords()">
         </div>
     </div>
 </template>
@@ -41,8 +40,19 @@
             this.shuffle(this.words);
         },
         methods: {
-            getWord() {
-                return this.words.slice(this.currentIndex, this.words.length + this.currentIndex).join(' ')
+            displayWords() {
+                const words = this.getWords();
+                words[0] = `<strong>${words[0]}</strong>`;
+                return words.join(' ')
+            },
+            getWords() {
+                const maxLength = this.words.length;
+                const index = this.currentIndex % maxLength;
+                if (this.currentIndex > 0 && index === 0) {
+                    this.currentIndex = 0;
+                    this.shuffle(this.words);
+                }
+                return this.words.slice(index, maxLength);
             },
             shuffle(words) {
                 words.forEach((word, index) => {
@@ -68,3 +78,4 @@
         }
     }
 </script>
+

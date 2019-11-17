@@ -1,7 +1,7 @@
 <template>
     <div class="field">
         <div class="control">
-            <input class="input is-large" type="text" placeholder="" v-model="inputValue" v-on:input="$emit('userInput', $event.target.value)">
+            <input class="input is-large" autofocus type="text" placeholder="" v-model="inputValue" v-on:input="$emit('userInput', $event.target.value)">
         </div>
     </div>
 </template>
