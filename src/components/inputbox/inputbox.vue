@@ -21,7 +21,6 @@
         },
         methods: {
             clear() {
-                this.test = 'ok';
                 if (this.deleteInput !== 0) {
                     this.inputValue = ''
                 }

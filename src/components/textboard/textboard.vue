@@ -49,6 +49,7 @@
                 const maxLength = this.words.length;
                 const index = this.currentIndex % maxLength;
                 if (this.currentIndex > 0 && index === 0) {
+                    this.$emit('finished')
                     this.currentIndex = 0;
                     this.shuffle(this.words);
                 }
